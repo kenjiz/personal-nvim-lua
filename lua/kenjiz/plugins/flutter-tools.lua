@@ -37,8 +37,8 @@ return {
           end,
         },
         dev_log = {
-          enabled = false,
-          open_cmd = "tabedit",
+          enabled = true,
+          open_cmd = ":tabedit",
         },
         lsp = {},
       })
@@ -54,7 +54,7 @@ return {
       keymap.set("n", "<leader>f<F10>", ":FlutterDevTools<CR>", { desc = "Flutter: Starts a dart dev tools server" })
       keymap.set(
         "n",
-        "<leader>fc",
+        "<leader>fe",
         require("telescope").extensions.flutter.commands,
         { desc = "Open Flutter tools command" }
       )
