@@ -9,8 +9,17 @@ return {
     config = function()
       local flutter_tools = require("flutter-tools")
       local dap = require("dap")
+      local telescope = require("telescope")
 
       flutter_tools.setup({
+        ui = {
+          border = "rounded",
+        },
+        decorations = {
+          device = true,
+          project_config = false,
+        },
+        fvm = true,
         debugger = {
           enabled = true,
           run_via_dap = true,
@@ -33,12 +42,18 @@ return {
               },
             }
 
-            require("dap.ext.vscode").load_launchjs()
+            if vim.fn.filereadable(".vscode/launch.json") then
+              require("dap.ext.vscode").load_launchjs()
+            end
           end,
         },
+
         dev_log = {
           enabled = true,
           open_cmd = ":tabedit",
+        },
+        outline = {
+          open_cmd = "30vnew",
         },
         lsp = {},
       })
@@ -54,10 +69,11 @@ return {
       keymap.set("n", "<leader>f<F10>", ":FlutterDevTools<CR>", { desc = "Flutter: Starts a dart dev tools server" })
       keymap.set(
         "n",
-        "<leader>fe",
-        require("telescope").extensions.flutter.commands,
-        { desc = "Open Flutter tools command" }
+        "<leader>f<F3>",
+        telescope.extensions.flutter.fvm,
+        { desc = "Flutter: Change Flutter sdk version via FVM" }
       )
+      keymap.set("n", "<leader>fe", telescope.extensions.flutter.commands, { desc = "Open Flutter tools command" })
     end,
   },
   { "dart-lang/dart-vim-plugin" },

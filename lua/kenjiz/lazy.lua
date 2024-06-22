@@ -11,13 +11,14 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
+vim.opt.exrc = true
 
-require("lazy").setup({ { import = "kenjiz.plugins", }, { import = "kenjiz.plugins.lsp"}, }, {
+require("lazy").setup({ { import = "kenjiz.plugins" }, { import = "kenjiz.plugins.lsp" } }, {
   checker = {
     enabled = true,
     notify = false,
   },
-    change_detection = {
+  change_detection = {
     notify = false,
   },
 })
