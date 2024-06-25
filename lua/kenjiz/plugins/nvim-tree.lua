@@ -12,6 +12,7 @@ return {
       view = {
         width = 35,
         relativenumber = true,
+        signcolumn = "yes",
       },
 
       -- change folder arrow icons
@@ -37,11 +38,30 @@ return {
           },
         },
       },
+      diagnostics = {
+        enable = true,
+        icons = {
+          hint = "💡",
+          info = "",
+          warning = "",
+          error = "",
+        },
+        show_on_dirs = true,
+      },
       filters = {
-        custom = { ".DS_Store" },
+        custom = {
+          ".DS_Store",
+          ".git",
+          ".dart_tool",
+          ".idea",
+          ".flutter-plugins",
+          ".flutter-plugins-dependencies",
+          ".metadata",
+          "*.iml",
+        },
       },
       git = {
-        ignore = true,
+        ignore = false,
       },
       update_focused_file = {
         enable = true,

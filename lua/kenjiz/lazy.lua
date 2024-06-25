@@ -12,6 +12,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 vim.opt.exrc = true
+vim.opt.textwidth = 120
 
 require("lazy").setup({ { import = "kenjiz.plugins" }, { import = "kenjiz.plugins.lsp" } }, {
   checker = {

@@ -8,7 +8,6 @@ return {
     },
     config = function()
       local flutter_tools = require("flutter-tools")
-      local dap = require("dap")
       local telescope = require("telescope")
 
       flutter_tools.setup({
@@ -17,13 +16,15 @@ return {
         },
         decorations = {
           device = true,
-          project_config = false,
+          project_config = true,
         },
         fvm = true,
         debugger = {
           enabled = true,
           run_via_dap = true,
           register_configurations = function(_)
+            local dap = require("dap")
+
             dap.adapters.dart = {
               type = "executable",
               command = vim.fn.stdpath("data") .. "/mason/bin/dart-debug-adapter",
@@ -47,15 +48,23 @@ return {
             end
           end,
         },
-
+        widget_guides = {
+          enabled = true,
+        },
         dev_log = {
           enabled = true,
+          notify_errors = true,
           open_cmd = ":tabedit",
         },
         outline = {
           open_cmd = "30vnew",
         },
-        lsp = {},
+        lsp = {
+          settings = {
+            lineLength = vim.o.textwidth,
+            documentation = "full",
+          },
+        },
       })
 
       local keymap = vim.keymap -- for conciseness
