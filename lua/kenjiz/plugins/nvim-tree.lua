@@ -8,10 +8,15 @@ return {
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
 
+    -- optionally enable 24-bit colour
+    vim.opt.termguicolors = true
+
     nvimtree.setup({
       view = {
         width = 35,
         relativenumber = true,
+        number = false,
+        side = "right",
         signcolumn = "yes",
       },
 
@@ -49,16 +54,17 @@ return {
         show_on_dirs = true,
       },
       filters = {
-        custom = {
-          ".DS_Store",
-          ".git",
-          ".dart_tool",
-          ".idea",
-          ".flutter-plugins",
-          ".flutter-plugins-dependencies",
-          ".metadata",
-          "*.iml",
-        },
+        dotfiles = true,
+        -- custom = {
+        --   ".DS_Store",
+        --   ".git",
+        --   ".dart_tool",
+        --   ".idea",
+        --   ".flutter-plugins",
+        --   ".flutter-plugins-dependencies",
+        --   ".metadata",
+        --   "*.iml",
+        -- },
       },
       git = {
         ignore = false,
