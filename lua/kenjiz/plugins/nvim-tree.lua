@@ -3,6 +3,7 @@ return {
   dependencies = "nvim-tree/nvim-web-devicons",
   config = function()
     local nvimtree = require("nvim-tree")
+    -- local nvimtree_api = require("nvim-tree.api")
 
     -- recommended settings from nvim-tree documentations
     vim.g.loaded_netrw = 1
@@ -55,26 +56,31 @@ return {
       },
       filters = {
         dotfiles = true,
-        -- custom = {
-        --   ".DS_Store",
-        --   ".git",
-        --   ".dart_tool",
-        --   ".idea",
-        --   ".flutter-plugins",
-        --   ".flutter-plugins-dependencies",
-        --   ".metadata",
-        --   "*.iml",
-        -- },
+        custom = {
+          ".DS_Store",
+          ".git",
+          ".dart_tool",
+          ".idea",
+          ".flutter-plugins",
+          ".flutter-plugins-dependencies",
+          ".metadata",
+          "*.iml",
+        },
       },
       git = {
         ignore = false,
       },
       update_focused_file = {
         enable = true,
-        update_root = false,
         ignore_list = {},
       },
     })
+
+    -- nvimtree_api.tree.toggle({
+    --   update_root = false,
+    --   focus = true,
+    --   find_file = false,
+    -- })
 
     -- set keymaps
     local keymap = vim.keymap -- for conciseness

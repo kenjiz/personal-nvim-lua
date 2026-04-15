@@ -1,56 +1,48 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  event = { "BufReadPre", "BufNewFile" },
+  lazy = false,
   build = ":TSUpdate",
-  dependencies = {
-    "windwp/nvim-ts-autotag",
-  },
-  config = function()
-    -- import nvim-treesitter plugin
-    local treesitter = require("nvim-treesitter.configs")
-
-    -- configure treesitter
-    treesitter.setup({
-      sync_install = true,
-
-      ignore_install = {},
-
-      auto_install = true,
-
-      -- enable syntax highlighting
-      highlight = { enable = true },
-
-      -- enable indentation
-      indent = { enable = true },
-
-      -- ensure these language parsers are installed
-      ensure_installed = {
-        "json",
-        "rust",
-        "yaml",
-        "markdown",
-        "markdown_inline",
-        "bash",
-        "lua",
-        "vim",
-        "gitignore",
-        "vimdoc",
-        "dart",
-        "xml",
-        "html",
-      },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<C-space>",
-          node_incremental = "<C-space>",
-          scope_incremental = false,
-          node_decremental = "<bs>",
-        },
-      },
-    })
-
-    -- nvim-ts-autotag no longer integrates through nvim-treesitter configs in newer versions
-    require("nvim-ts-autotag").setup()
-  end,
 }
+-- return {
+--   "nvim-treesitter/nvim-treesitter",
+--   version = false, -- last release is way too old and doesn't work on Windows.
+--   lazy = false,
+--   build = ":TSUpdate",
+--   -- event = { "BufReadPost", "BufNewFile" },
+--   dependencies = {
+--     "nvim-treesitter/nvim-treesitter-textobjects",
+--   },
+--   cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
+--   opts = {
+--     ensure_installed = {
+--       "bash",
+--       "c",
+--       "diff",
+--       "html",
+--       "javascript",
+--       "jsdoc",
+--       "json",
+--       "lua",
+--       "luadoc",
+--       "luap",
+--       "markdown",
+--       "markdown_inline",
+--       "python",
+--       "query",
+--       "regex",
+--       "tsx",
+--       "typescript",
+--       "vim",
+--       "vimdoc",
+--     },
+--     highlight = { enable = true },
+--     indent = { enable = true },
+--     -- Optional: Install parsers synchronously (good for CI or fresh installs)
+--     sync_install = false,
+--     -- Optional: Automatically install missing parsers when entering a buffer
+--     auto_install = true,
+--   },
+--   config = function(_, opts)
+--     require("nvim-treesitter.configs").setup(opts)
+--   end,
+-- }

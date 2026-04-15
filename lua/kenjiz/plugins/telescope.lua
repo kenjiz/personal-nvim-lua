@@ -1,6 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
-  branch = "0.1.x",
+  version = "*",
   dependencies = {
     "nvim-lua/plenary.nvim",
     {
@@ -16,6 +16,7 @@ return {
 
     telescope.setup({
       defaults = {
+        preview = { treesitter = false },
         path_display = { "smart" },
         mappings = {
           i = {
@@ -28,14 +29,5 @@ return {
     })
     telescope.load_extension("fzf")
     telescope.load_extension("flutter")
-
-    -- set keymaps
-    local keymap = vim.keymap -- for conciseness
-
-    keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Fuzzy find files in cwd" })
-    keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<CR>", { desc = "Fuzzy find recent files" })
-    keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<CR>", { desc = "Find string in cwd" })
-    keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<CR>", { desc = "Find string under cursor in cwd" })
-    keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<CR>", { desc = "Find todos" })
   end,
 }

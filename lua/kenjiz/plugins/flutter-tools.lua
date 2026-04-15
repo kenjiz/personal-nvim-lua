@@ -1,7 +1,7 @@
 return {
   { "mfussenegger/nvim-dap" },
   {
-    "akinsho/flutter-tools.nvim",
+    "nvim-flutter/flutter-tools.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "stevearc/dressing.nvim",
