@@ -11,8 +11,6 @@ return {
 
     -- configure treesitter
     treesitter.setup({
-      modules = {},
-
       sync_install = true,
 
       ignore_install = {},
@@ -24,9 +22,6 @@ return {
 
       -- enable indentation
       indent = { enable = true },
-
-      -- enable autotagging (w/ nvim-ts-autotag plugin)
-      autotag = { enable = true },
 
       -- ensure these language parsers are installed
       ensure_installed = {
@@ -54,5 +49,8 @@ return {
         },
       },
     })
+
+    -- nvim-ts-autotag no longer integrates through nvim-treesitter configs in newer versions
+    require("nvim-ts-autotag").setup()
   end,
 }
